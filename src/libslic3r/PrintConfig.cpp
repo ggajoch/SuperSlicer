@@ -3121,7 +3121,7 @@ void PrintConfigDef::init_fff_params()
 
     def = this->add("perimeter_speed", coFloat);
     def->label = L("Default");
-    def->full_label = L("Default speed");
+    def->full_label = L("Perimeter speed");
     def->category = OptionCategory::speed;
     def->tooltip = L("Speed for perimeters (contours, aka vertical shells). Set to zero for auto.");
     def->sidetext = L("mm/s");
