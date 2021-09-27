@@ -3121,7 +3121,7 @@ void PrintConfigDef::init_fff_params()
 
     def = this->add("perimeter_speed", coFloat);
     def->label = L("Default");
-    def->full_label = L("Default speed");
+    def->full_label = L("Perimeter speed");
     def->category = OptionCategory::speed;
     def->tooltip = L("Speed for perimeters (contours, aka vertical shells). Set to zero for auto.");
     def->sidetext = L("mm/s");
@@ -3327,7 +3327,8 @@ void PrintConfigDef::init_fff_params()
     def->label = L("Enforce on first layer");
     def->full_label = L("Enforce lift on first layer");
     def->category = OptionCategory::extruders;
-    def->tooltip = L("Select this option to enforce z-lift on the first layer.");
+    def->tooltip = L("Select this option to enforce z-lift on the first layer."
+        "\nIf this is enabled and the lift value is 0 or deactivated, then every first move before each object will be lifted by the first layer height.");
     def->mode = comAdvanced;
     def->is_vector_extruder = true;
     def->set_default_value(new ConfigOptionBools{ false });
