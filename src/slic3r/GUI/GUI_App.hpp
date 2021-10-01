@@ -254,6 +254,7 @@ public:
     void            bridge_tuning_dialog();
     void            over_bridge_dialog();
     void            calibration_cube_dialog();
+    void            calibration_gg_dialog();
 	void            calibration_retraction_dialog();
     void            freecad_script_dialog();
     void            tiled_canvas_dialog();

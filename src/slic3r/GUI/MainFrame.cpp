@@ -1960,6 +1960,9 @@ void MainFrame::init_menubar_as_editor()
         m_calibration_menu->AppendSeparator();
         append_menu_item(m_calibration_menu, wxID_ANY, _(L("Calibration cube")), _(L("Print a calibration cube, for various calibration goals.")),
             [this](wxCommandEvent&) { wxGetApp().calibration_cube_dialog(); });
+        calibrationMenu->AppendSeparator();
+        append_menu_item(calibrationMenu, wxID_ANY, _(L("GG calibrations")), _(L("Various calibrations prepared by GG.")),
+            [this](wxCommandEvent&) { wxGetApp().calibration_gg_dialog(); });
     }
 
     // objects menu

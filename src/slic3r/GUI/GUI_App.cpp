@@ -63,6 +63,7 @@
 #include "CalibrationBridgeDialog.hpp"
 #include "CalibrationCubeDialog.hpp"
 #include "CalibrationFlowDialog.hpp"
+#include "CalibrationGGDialog.hpp"
 #include "CalibrationOverBridgeDialog.hpp"
 #include "CalibrationTempDialog.hpp"
 #include "CalibrationRetractionDialog.hpp"
@@ -1939,6 +1940,10 @@ void GUI_App::filament_temperature_dialog()
 void GUI_App::calibration_cube_dialog()
 {
     change_calibration_dialog(nullptr, new CalibrationCubeDialog(this, mainframe));
+}
+void GUI_App::calibration_gg_dialog()
+{
+    change_calibration_dialog(nullptr, new CalibrationGGDialog(this, mainframe));
 }
 void GUI_App::calibration_retraction_dialog()
 {
