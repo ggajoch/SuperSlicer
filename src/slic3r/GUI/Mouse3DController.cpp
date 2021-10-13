@@ -1162,9 +1162,9 @@ static double convert_input(int coord_byte_low, int coord_byte_high, double dead
 bool Mouse3DController::handle_packet_translation(const DataPacketRaw& packet, const Params &params, State &state_in_out)
 {
     double deadzone = params.translation.deadzone;
-    Vec3d translation(-convert_input(packet[1], packet[2], deadzone),
-        convert_input(packet[3], packet[4], deadzone),
-        convert_input(packet[5], packet[6], deadzone));
+    Vec3d translation(convert_input(packet[1], packet[2], deadzone),
+        convert_input(packet[5], packet[6], deadzone),
+        -convert_input(packet[3], packet[4], deadzone));
 
     if (!translation.isApprox(Vec3d::Zero()))
     {
@@ -1179,9 +1179,9 @@ bool Mouse3DController::handle_packet_translation(const DataPacketRaw& packet, c
 bool Mouse3DController::handle_packet_rotation(const DataPacketRaw& packet, unsigned int first_byte, const Params &params, State &state_in_out)
 {
     double deadzone = (double)params.rotation.deadzone;
-    Vec3f rotation((float)convert_input(packet[first_byte + 0], packet[first_byte + 1], deadzone),
-        (float)convert_input(packet[first_byte + 2], packet[first_byte + 3], deadzone),
-        (float)convert_input(packet[first_byte + 4], packet[first_byte + 5], deadzone));
+    Vec3f rotation(-(float)convert_input(packet[first_byte + 0], packet[first_byte + 1], deadzone),
+        (float)convert_input(packet[first_byte + 4], packet[first_byte + 5], deadzone),
+        -(float)convert_input(packet[first_byte + 2], packet[first_byte + 3], deadzone));
 
     if (!rotation.isApprox(Vec3f::Zero()))
     {
