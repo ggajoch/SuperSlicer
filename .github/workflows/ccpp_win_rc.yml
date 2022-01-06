@@ -100,10 +100,28 @@ jobs:
         xcopy /RCYIE src\release\*.exe package\
         xcopy /RCYIE c:\windows\system32\VCRUNTIME140* package\
         del package\opengl32.dll
-#    - name: create zip
-#      working-directory: ./build
-#      shell: cmd
-#      run: '"C:/Program Files/7-Zip/7z.exe" a -tzip nightly.zip *'
+    - name: empty folders removal
+      working-directory: ./build/package
+      shell: cmd
+      run: |
+        for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d" & set errorlevel=0
+    - name: create zip
+      working-directory: ./build/package
+      shell: cmd
+      run: '"C:/Program Files/7-Zip/7z.exe" a -tzip nightly.zip *'
+    - name: "Create release"
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Build"
+        files: |
+          build/package/nightly.zip
+    - name: "Remove zip"
+      working-directory: ./build/package
+      shell: cmd
+      run: 'del nightly.zip'
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
