@@ -1,0 +1,30 @@
+permissions: write-all
+on:
+  push:
+    branches: [ rc, rc-updater ]
+  schedule:
+    - cron:  '30 1 * * *'
+  workflow_dispatch:
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          ref: 'rc'
+          fetch-depth: 0
+      - name: Pull
+        run: |
+          git remote add upstream https://github.com/supermerill/SuperSlicer
+          git fetch upstream
+      - name: Rebase
+        run: |
+          git config --global user.email "gajoch@gmail.com"
+          git config --global user.name "Grzegorz Gajoch"
+          git rebase upstream/rc
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: rc
+          force: true
