@@ -46,7 +46,7 @@ const NotificationManager::NotificationData NotificationManager::basic_notificat
 	{NotificationType::PresetUpdateAvailable, NotificationLevel::ImportantNotification, 20,  _u8L("Configuration update is available."),  _u8L("See more."), [](wxEvtHandler* evnthndlr){
 		 if (evnthndlr != nullptr) wxPostEvent(evnthndlr, PresetUpdateAvailableClickedEvent(EVT_PRESET_UPDATE_AVAILABLE_CLICKED)); return true; }},
 	{NotificationType::NewAppAvailable, NotificationLevel::ImportantNotification, 20,  _u8L("New version is available."),  _u8L("See Releases page."), [](wxEvtHandler* evnthndlr){
-				wxLaunchDefaultBrowser("https://github.com/" SLIC3R_GITHUB "/releases"); return true; }},
+				wxLaunchDefaultBrowser(SLI3R_LATEST_DOWNLOAD); return true; }},
 	{NotificationType::EmptyColorChangeCode, NotificationLevel::RegularNotification, 10,
 			_u8L("You have just added a G-code for color change, but its value is empty.\n"
 		  "To export the G-code correctly, check the \"Color Change G-code\" in \"Printer Settings > Custom G-code\"") },
