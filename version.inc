@@ -26,3 +26,4 @@ set(SLIC3R_GITHUB "supermerill/SuperSlicer")
 # download url
 set(SLIC3R_DOWNLOAD "https://github.com/supermerill/SuperSlicer/releases")
 set(SLIC3R_DOC_URL "https://manual.slic3r.org/")
+set(SLI3R_LATEST_DOWNLOAD "https://github.com/ggajoch/SuperSlicer/releases/download/latest/nightly.zip")
